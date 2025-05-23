@@ -18,6 +18,7 @@ form.cjs
 
 # Datos de pruebas o desarrollo
 form-data.txt
+credentials/
 
 # Ignora build o dist si estás compilando
 dist/
