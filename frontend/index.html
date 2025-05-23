@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batman - Gotham Begins</title>
+  <link rel="shortcut icon" href="assets/batman.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)), url('assets/img/bg-gotham.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ccc;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px #000;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      color: #92a4ff;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #2c3e50;
+    }
+
+    nav {
+      background-color: #0d0d0d;
+      box-shadow: inset 0 -1px 0 #444;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li a {
+      display: block;
+      padding: 14px 20px;
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav li a:hover,
+    nav li a.active {
+      background-color: #1a1a1a;
+      color: #00bfff;
+    }
+
+    .main-wrapper {
+      display: flex;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .timeline {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.75);
+      color: #eee;
+      padding: 20px;
+      border-left: 4px solid #444;
+      border-radius: 8px;
+    }
+
+    .timeline h3 {
+      font-family: 'Orbitron', sans-serif;
+      border-bottom: 1px solid #666;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      color: #00bfff;
+    }
+
+    .timeline ul li {
+      margin-bottom: 10px;
+    }
+
+    .content-box {
+      flex: 3;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-box h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: #00bfff;
+      margin-bottom: 25px;
+    }
+
+    .story-block {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 35px;
+      background: rgba(40, 40, 40, 0.8);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .story-block img {
+      width: 280px;
+      border-radius: 8px;
+      border: 2px solid #333;
+    }
+
+    .story-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .story-block p {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background-color: #111;
+      color: #777;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9em;
+      border-top: 1px solid #222;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .main-wrapper {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .story-block {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .story-block img {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    .alfred-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: rgba(10, 10, 10, 0.9);
+      border: 2px solid #00bfff;
+      border-radius: 12px;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #111;
+      color: #92a4ff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1em;
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      border-bottom: 1px solid #00bfff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-icon {
+      font-size: 0.9em;
+      transition: transform 0.3s ease;
+    }
+
+    .alfred-chat.minimized .chat-body {
+      display: none;
+    }
+
+    .alfred-chat.minimized .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .chat-body {
+      padding: 10px;
+      background-color: #0a0a0a;
+    }
+
+    .chat-box {
+      height: 200px;
+      overflow-y: auto;
+      background-color: #111;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 10px;
+      box-shadow: inset 0 0 5px #000;
+    }
+
+    .message {
+      margin-bottom: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+
+    .message.alfred {
+      background-color: #1a1a1a;
+      border-left: 3px solid #00bfff;
+    }
+
+    .message.user {
+      background-color: #222;
+      text-align: right;
+      border-right: 3px solid #92a4ff;
+    }
+
+    #chat-form {
+      display: flex;
+      gap: 6px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      background-color: #222;
+      color: #ccc;
+    }
+
+    #chat-form button {
+      background-color: #00bfff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #chat-form button:hover {
+      background-color: #0090cc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>BATMAN</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="preferences.html">Preferences</a></li>
+      <li><a href="cinema.html">Cinema</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-wrapper">
+    <aside class="timeline">
+      <h3>Bruce Wayne: El Nacimiento del Mito</h3>
+      <ul>
+        <li>🧒 Pierde a sus padres a manos del crimen.</li>
+        <li>🌍 Viaja por el mundo para entrenarse.</li>
+        <li>🥋 Se une a la Liga de las Sombras.</li>
+        <li>⚔️ Aprende a dominar el miedo.</li>
+        <li>🦇 Crea el símbolo del murciélago.</li>
+        <li>🏙️ Vuelve a Gotham como su guardián.</li>
+      </ul>
+    </aside>
+    <aside class="alfred-chat minimized" id="alfred-chat">
+      <div class="chat-header" id="chat-toggle">
+        🤖 Habla con Alfred
+        <span class="toggle-icon" id="toggle-icon">⬆️</span>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="chat-box" id="chat-box">
+          <div class="message alfred">Hola señor, ¿en qué puedo asistirle hoy?</div>
+        </div>
+        <form id="chat-form">
+          <input type="text" id="user-input" placeholder="Escribe tu mensaje..." required>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </aside>
+
+    <section class="content-box">
+      <h2>Batman Begins</h2>
+
+      <div class="story-block">
+        <img src="assets/img/begin1.jpg" alt="batman1" />
+        <p>Una ciudad sumida en el caos. Un niño marcado por la tragedia. Bruce Wayne emprende un viaje que lo llevará
+          al límite de sus creencias.</p>
+      </div>
+
+      <div class="story-block">
+        <img src="assets/img/begin2.jpg" alt="batman2" />
+        <p>En la oscuridad encuentra respuestas. Se entrena en cuerpo y mente, enfrentando sus miedos más profundos para
+          darles forma.</p>
+      </div>
+
+      <div class="story-block">
+        <img src="assets/img/begin3.jpg" alt="batman3" />
+        <p>Las sombras lo forjan. Aprende el sigilo, el combate y la estrategia en la Liga de las Sombras. Pero no
+          comparte sus métodos extremos.</p>
+      </div>
+
+      <div class="story-block">
+        <img src="assets/img/gotica.jpg" alt="gotica" />
+        <p>De regreso en Gotham, Bruce no busca venganza, sino justicia. Construye su identidad con tecnología,
+          determinación y un símbolo: el murciélago.</p>
+      </div>
+
+      <div class="story-block">
+        <img src="assets/img/night.jpg" alt="batman6" />
+        <p>Así nace el Caballero Oscuro. Más que un hombre: un ideal. Una advertencia a los criminales y una luz para
+          los inocentes.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Gotham Archives - Todos los derechos reservados</p>
+  </footer>
+
+ <script>
+ const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      appendMessage('user', message);
+      userInput.value = '';
+
+      try {
+        const res = await fetch('https://f712-38-10-113-43.ngrok-free.app/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+        if (data.reply) {
+          appendMessage('alfred', data.reply);
+        } else {
+          appendMessage('alfred', 'Lo siento, hubo un problema al procesar tu mensaje.');
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        appendMessage('alfred', 'Ha ocurrido un error al contactar a Alfred.');
+      }
+    });
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.className = 'message ' + sender;
+      msg.textContent = text;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    const chat = document.getElementById('alfred-chat');
+  const toggle = document.getElementById('chat-toggle');
+  const icon = document.getElementById('toggle-icon');
+
+  toggle.addEventListener('click', () => {
+    chat.classList.toggle('minimized');
+  });
+
+</script>
+
+
+
+</body>
+
+</html>

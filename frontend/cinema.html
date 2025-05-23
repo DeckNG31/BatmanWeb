@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Batman - The Dark Knight</title>
+  <link rel="shortcut icon" href="assets/batman.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('assets/img/bg-gotham.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ccc;
+    }
+
+    .smoke {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+     
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      text-align: center;
+      padding: 30px 0;
+      box-shadow: 0 2px 10px #000;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      color: #92a4ff;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #2c3e50;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #0d0d0d;
+      box-shadow: inset 0 -1px 0 #444;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li a {
+      display: block;
+      padding: 14px 20px;
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav li a:hover,
+    nav li a.active {
+      background-color: #1a1a1a;
+      color: #00bfff;
+    }
+
+    video.centrado {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    section.centrado {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      justify-items: center;
+    }
+
+    .gallery {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      background-color: rgba(30, 30, 30, 0.9);
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery img {
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      width: 100%;
+      display: block;
+    }
+
+    .footer {
+      background-color: #111;
+      color: #777;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+
+      nav a {
+        padding: 12px 10px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="smoke"></div>
+
+  <header>
+    <h1>BATMAN</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="preferences.html">Preferences</a></li>
+      <li><a class="active" href="cinema.html">Cinema</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <video class="centrado" src="assets/video/videoplayback.mp4" controls autoplay muted loop></video>
+
+  <section class="centrado">
+    <div class="gallery">
+      <a href="assets/img/robert.jpg" target="_blank">
+        <img src="assets/img/robert.jpg" alt="Robert Pattinson Batman 1">
+      </a>
+    </div>
+
+    <div class="gallery">
+      <a href="assets/img/robert2.jpg" target="_blank">
+        <img src="assets/img/robert2.jpg" alt="Robert Pattinson Batman 2">
+      </a>
+    </div>
+
+    <div class="gallery">
+      <a href="assets/img/robert3.jpg" target="_blank">
+        <img src="assets/img/robert3.jpg" alt="Robert Pattinson Batman 3">
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Derechos reservados al mayor fan de Batman &copy; Benjamin Pozzi - 2025</p>
+  </footer>
+
+</body>
+</html>

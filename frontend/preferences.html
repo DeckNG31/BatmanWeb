@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Batman - Stats</title>
+  <link rel="shortcut icon" href="assets/batman.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('assets/img/bg-gotham.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ccc;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      text-align: center;
+      padding: 30px 0;
+      box-shadow: 0 2px 10px #000;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      color: #92a4ff;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #2c3e50;
+    }
+
+    nav {
+      background-color: #0d0d0d;
+      box-shadow: inset 0 -1px 0 #444;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li a {
+      display: block;
+      padding: 14px 20px;
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav li a:hover,
+    nav li a.active {
+      background-color: #1a1a1a;
+      color: #00bfff;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: #00bfff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .bat-img {
+      display: block;
+      margin: 40px auto 20px;
+      width: 300px;
+      filter: brightness(1.1) contrast(1.2);
+    }
+
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(20, 20, 20, 0.9);
+      border: 2px solid #00bfff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0,191,255, 0.5);
+      backdrop-filter: blur(2px);
+    }
+
+    .card h3 {
+      border-bottom: 1px solid #00bfff;
+      font-family: 'Orbitron', sans-serif;
+      color: #92a4ff;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+    }
+
+    .stat {
+      margin: 12px 0;
+    }
+
+    .label {
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #eee;
+    }
+
+    .bar {
+      background-color: #222;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: inset 0 0 5px #000;
+    }
+
+    .fill {
+      height: 15px;
+      background: linear-gradient(to right, #00bfff, #004466);
+      transition: width 0.4s ease;
+    }
+
+    ul li {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+
+    .footer {
+      background-color: #111;
+      color: #777;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+      border-top: 1px solid #222;
+    }
+
+    /* Humo animado */
+    .smoke {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('assets/effects/smoke2.gif') center center repeat;
+      opacity: 0.1;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="smoke"></div>
+
+  <header>
+    <h1>BATMAN</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="preferences.html">Preferences</a></li>
+        <li><a href="cinema.html">Cinema</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2>🦇 Batman - Stats & Skills 🦇</h2>
+
+  <img src="assets/img/batstats.jpg" alt="batman-stats" class="bat-img">
+
+  <div class="stats-container">
+    <div class="card">
+      <h3>Características Físicas</h3>
+      <div class="stat">
+        <div class="label">Altura: 1.83 m</div>
+        <div class="label">Peso: 81 kg</div>
+      </div>
+      <div class="stat">
+        <div class="label">Fuerza</div>
+        <div class="bar"><div class="fill" style="width: 90%;"></div></div>
+      </div>
+      <div class="stat">
+        <div class="label">Destreza</div>
+        <div class="bar"><div class="fill" style="width: 100%;"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Artes Marciales</h3>
+      <ul>
+        <li>🥋 Judo</li>
+        <li>🥊 Muay Thai</li>
+        <li>🥊 Boxeo</li>
+        <li>🥋 Jiu Jitsu</li>
+        <li>🗡️ Ninjutsu</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Habilidades Especiales</h3>
+      <ul>
+        <li>🧠 Estrategia táctica</li>
+        <li>🕵️ Criminología</li>
+        <li>🔬 Ciencia forense</li>
+        <li>🧗 Sigilo extremo</li>
+        <li>🛠️ Uso de tecnología</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Gotham Archives - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
